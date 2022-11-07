@@ -12,7 +12,7 @@ How to run:
 4. run the jar - java -jar  Ass2.0.jar
 
 
-- Map-Reduce jobs -  
+------- Map-Reduce jobs -----  
 
 * JOB 1 -
 
@@ -32,6 +32,8 @@ Mapper:
 Redducer:
 -Types:   <Text,LongWritable,Text,LongWritable>
 
+
+
 * JOB 2 -
 
 Class: FirstJob
@@ -41,7 +43,6 @@ Goal:
 -calculate for each w in the dataset her C (means number of occurrence
 -join between the W,C to Decade,N
 -Filter the Stop words .
-
 
 Output:
 File that contain:  <decade , w> < N, C1>
@@ -56,6 +57,8 @@ Types: <KeyWordPerDecade,LongWritable,KeyWordPerDecade,LongWritable>
 output:<decade,w1,*><N,number of occ w>
 
 
+          
+          
 * JOB 3 -
 class: SecondJob
 -Using with 2-grams
@@ -74,6 +77,8 @@ Redducer:
 Types: Reducer<KeyWordPerDecade,LongWritable,KeyWordPerDecade,LongWritable>
 
 
+          
+          
 * JOB 4 -
 class: ThirdJob
 using: - output of job 2 and job3
@@ -95,6 +100,8 @@ Redducer:<KeyForFirstJoin, Text, Text, Text>
 output:
 <w2,w1,decade><numberofocc w1, number of occ w1w2 =c12 , N>
 
+          
+          
 * JOB 5 -
 
 class: JoinAllDetails
@@ -120,12 +127,17 @@ Types: <KeyForFirstJoin, Text, Text, Text>
 -If the input is from "from1gram" than we save the variable of number of occ of w2.
 - Else, if the input is from "from2gram" we calcaulte the ratio of the couple word.
 
+          
+          
+          
 * JOB 6 -
 class: ArrangingTheResult
 using the output from job 5
 Goal - send the 100 top ratio of couplt of word in each decade.
 
 
+          
+          
 heb file:
 Time runing with arrgretion:
 - heb- all  : runing in 50 min.
