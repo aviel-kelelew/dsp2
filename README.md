@@ -14,7 +14,7 @@ How to run:
 
 ------- Map-Reduce jobs -----  
 
-* JOB 1 -
+# JOB 1 -
 
 Class:  CountPerDecade
 -Using with 1-grams
@@ -34,7 +34,7 @@ Redducer:
 
 
 
-* JOB 2 -
+# JOB 2 -
 
 Class: FirstJob
 -Using with 1-grams
@@ -59,7 +59,7 @@ output:<decade,w1,*><N,number of occ w>
 
           
           
-* JOB 3 -
+# JOB 3 -
 class: SecondJob
 -Using with 2-grams
 Goal:
@@ -79,7 +79,7 @@ Types: Reducer<KeyWordPerDecade,LongWritable,KeyWordPerDecade,LongWritable>
 
           
           
-* JOB 4 -
+# JOB 4 -
 class: ThirdJob
 using: - output of job 2 and job3
 goal:- To do join between the two inputs
@@ -102,7 +102,7 @@ output:
 
           
           
-* JOB 5 -
+# JOB 5 -
 
 class: JoinAllDetails
 Using: output of job 4 and output of job2
@@ -125,12 +125,12 @@ Redducer:
 Types: <KeyForFirstJoin, Text, Text, Text>
 
 -If the input is from "from1gram" than we save the variable of number of occ of w2.
-- Else, if the input is from "from2gram" we calcaulte the ratio of the couple word.
+-Else, if the input is from "from2gram" we calcaulte the ratio of the couple word.
 
           
           
           
-* JOB 6 -
+# JOB 6 -
 class: ArrangingTheResult
 using the output from job 5
 Goal - send the 100 top ratio of couplt of word in each decade.
