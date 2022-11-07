@@ -14,9 +14,9 @@ How to run:
 
 ------- Map-Reduce jobs -----  
 
-# JOB 1 -
+# JOB 0 -
 
-Class:  CountPerDecade
+Class:  CountPerDecade - Job0_count_n_per_dec
 -Using with 1-grams
 Goal:
 - Calculate for each decase his N
@@ -34,9 +34,9 @@ Redducer:
 
 
 
-# JOB 2 -
+# JOB 1 -
 
-Class: FirstJob
+Class: FirstJob - Job1_calc_c_per_dec
 -Using with 1-grams
 
 Goal:
@@ -59,8 +59,8 @@ output:<decade,w1,*><N,number of occ w>
 
           
           
-# JOB 3 -
-class: SecondJob
+# JOB 2 -
+class: SecondJob -Job2_calc_c1_c2_per_dec
 -Using with 2-grams
 Goal:
 -Create sequence of the words with the number of their occ in for each decade
@@ -79,8 +79,8 @@ Types: Reducer<KeyWordPerDecade,LongWritable,KeyWordPerDecade,LongWritable>
 
           
           
-# JOB 4 -
-class: ThirdJob
+# JOB 3 - 
+class: ThirdJob -Job3_join
 using: - output of job 2 and job3
 goal:- To do join between the two inputs
 
@@ -102,9 +102,9 @@ output:
 
           
           
-# JOB 5 -
+# JOB 4 -
 
-class: JoinAllDetails
+class: JoinAllDetails -Job4_join_all_details
 Using: output of job 4 and output of job2
 Goals: -want to join to our couple the number of occ of W2
           -compute the log likehood ratio of each couplt for each decade.
@@ -130,7 +130,7 @@ Types: <KeyForFirstJoin, Text, Text, Text>
           
           
           
-# JOB 6 -
+# JOB 5 - Job5_arranging_the_result
 class: ArrangingTheResult
 using the output from job 5
 Goal - send the 100 top ratio of couplt of word in each decade.
